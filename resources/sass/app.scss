@@ -1,0 +1,44 @@
+// Fonts
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Fontawesome
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    font-family: $font-family;
+    font-weight: 400;
+    background-image: url("../../public/storage/image/background/bnbbackground.png");
+    background-repeat: repeat;
+    background-size: 600px 600px;
+}
+main {
+    display: block;
+}
+
+// Auth
+.form-auth {
+    max-width: 30rem;
+}
+.form-auth-bg {
+    padding: 4rem;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+}
+
+// Navbar
+.nt-text {
+    font-size: 22px;
+}
+.ni-text {
+    font-size: 18px;
+}
