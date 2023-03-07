@@ -39,29 +39,30 @@
                 <form method="POST">
                     @csrf
                     <div class="form-floating">
-                        <input class="form-control" type="text" placeholder="Name" id="inputName"
+                        <input class="form-control" type="text" placeholder="Name" id="name"
                             class="form-control" name="name" required autofocus>
-                        <label for="inputEmail">Name</label>
+                        <label for="name">Name</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" type="text" placeholder="Email" id="inputEmail"
+                        <input class="form-control" type="text" placeholder="Email" id="email"
                             class="form-control" name="email" required>
-                        <label for="inputEmail">Email address</label>
+                        <label for="email">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" type="password" placeholder="Password" id="inputPassword"
-                            class="form-control" name="password" required>
-                        <label for="inputPassword">Password</label>
+                        <input class="form-control" type="password" placeholder="Password" id="password"
+                            class="form-control" name="password" required autocomplete="new-password">
+                        <label for="password">Password</label>
                     </div>
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Terms of Service
-                        </label>
+                    <div class="form-floating">
+                        <input class="form-control" type="password" placeholder="Password Confirmation"
+                            id="password_confirmation" class="form-control" name="password_confirmation" required
+                            autocomplete="new-password">
+                        <label for="password_confirmation">Password Confirmation</label>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                    <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Register</button>
                 </form>
                 <div>Do you have an account?
-                    <a class="small" href="{{ route('auth.login') }}">Login</a>
+                    <a href="{{ route('auth.login') }}">Login</a>
                 </div>
             </div>
         </div>

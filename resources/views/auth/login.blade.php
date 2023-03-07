@@ -56,7 +56,7 @@
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
                 </form>
                 <div>Do you need an account?
-                    <a class="small" href="{{ route('auth.register') }}">Register</a>
+                    <a href="{{ route('auth.register') }}">Register</a>
                 </div>
             </div>
         </div>
