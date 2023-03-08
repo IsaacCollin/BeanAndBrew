@@ -42,3 +42,17 @@ main {
 .ni-text {
     font-size: 18px;
 }
+
+// password visual validation
+.invalid {
+    color: red;
+}
+.invalid::before {
+    //content: '';
+}
+.valid {
+    color: green;
+}
+.valid::before {
+    //content: '';
+}

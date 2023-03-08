@@ -59,7 +59,13 @@
                             autocomplete="new-password">
                         <label for="password_confirmation">Password Confirmation</label>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Register</button>
+                    <div class="mt-3 text-start">
+                        <p id="password" class="invalid">Password are matching</p>
+                        <p id="letter" class="invalid">A letter</p>
+                        <p id="number" class="invalid">A number</p>
+                        <p id="length" class="invalid">Between 8 - 255 Characters</p>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary mt-1" type="submit">Register</button>
                 </form>
                 <div>Do you have an account?
                     <a href="{{ route('auth.login') }}">Login</a>

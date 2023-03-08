@@ -37,12 +37,18 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
+                                    @if (Auth::user()->administrator == 1)
+                                        <li><a class="dropdown-item" href="{{ route('shop.dashboard') }}">Dashboard</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                    @endif
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <a class="dropdown-item" href="route('logout')"
                                                 onclick="event.preventDefault();
-                                                      this.closest('form').submit();">
+      this.closest('form').submit();">
                                                 Log Out
                                             </a>
                                         </form>
