@@ -1,5 +1,6 @@
 var password = document.getElementById("password");
 var password_confirmation = document.getElementById("password_confirmation");
+var password_compare = document.getElementById("password_compare");
 var letter = document.getElementById("letter");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
@@ -7,9 +8,15 @@ var length = document.getElementById("length");
 // When the user starts to type something inside the password field
 password.onkeyup = function () {
     //
-    if (password === password_confirmation) {
-        
-    }
+    password_confirmation.addEventListener("input", function () {
+        if (password_confirmation.value === password_input.value) {
+            password_compare.classList.remove("invalid");
+            password_compare.classList.remove("valid");
+        } else {
+            password_compare.classList.remove("valid");
+            password_compare.classList.remove("invalid");
+        }
+    });
 
     // Checks that the user has inputted letters
     var letters = /[a-z]/;

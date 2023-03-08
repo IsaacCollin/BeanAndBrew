@@ -60,7 +60,7 @@
                         <label for="password_confirmation">Password Confirmation</label>
                     </div>
                     <div class="mt-3 text-start">
-                        <p id="password" class="invalid">Password are matching</p>
+                        <p id="password-compare" class="invalid">Matching passwords</p>
                         <p id="letter" class="invalid">A letter</p>
                         <p id="number" class="invalid">A number</p>
                         <p id="length" class="invalid">Between 8 - 255 Characters</p>
