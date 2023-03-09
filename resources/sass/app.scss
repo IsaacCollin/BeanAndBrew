@@ -42,17 +42,24 @@ main {
 .ni-text {
     font-size: 18px;
 }
+.ddi-text {
+    font-size: 16px;
+}
 
 // password visual validation
-.invalid {
-    color: red;
-}
-.invalid::before {
-    //content: '';
-}
 .valid {
     color: green;
 }
 .valid::before {
-    //content: '';
+    font-family: "FontAwesome";
+    content: "\f00c";
+    margin-right: 1rem;
+}
+.invalid {
+    color: red;
+}
+.invalid::before {
+    font-family: "FontAwesome";
+    content: "\f00d";
+    margin-right: 1rem;
 }

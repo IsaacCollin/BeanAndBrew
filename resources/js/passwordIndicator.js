@@ -7,14 +7,14 @@ var length = document.getElementById("length");
 
 // When the user starts to type something inside the password field
 password.onkeyup = function () {
-    //
+    //Checks that the user has inputted the same password in both fields
     password_confirmation.addEventListener("input", function () {
-        if (password_confirmation.value === password_input.value) {
+        if (password_confirmation.value === password.value && password !== "") {
             password_compare.classList.remove("invalid");
-            password_compare.classList.remove("valid");
+            password_compare.classList.add("valid");
         } else {
             password_compare.classList.remove("valid");
-            password_compare.classList.remove("invalid");
+            password_compare.classList.add("invalid");
         }
     });
 

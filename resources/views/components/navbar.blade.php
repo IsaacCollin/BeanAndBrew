@@ -13,13 +13,21 @@
                         <a class="nav-link" aria-current="page" href="{{ url('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">Order</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            aria-expanded="false">Booking <i class="fa-solid fa-book"></i></a>
+                        <ul class="dropdown-menu ddi-text">
+                            <li><a class="dropdown-item" href="#">Book a Table</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Baking Lessons</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
@@ -32,7 +40,7 @@
                             @auth
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                     aria-expanded="false"><i class="fa-solid fa-user fa-lg"></i></a>
-                                <ul class="dropdown-menu ni-text">
+                                <ul class="dropdown-menu ddi-text">
                                     <li><a class="dropdown-item" href="#">Account</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -48,7 +56,7 @@
                                             @csrf
                                             <a class="dropdown-item" href="route('logout')"
                                                 onclick="event.preventDefault();
-      this.closest('form').submit();">
+                                                    this.closest('form').submit();">
                                                 Log Out
                                             </a>
                                         </form>
@@ -57,9 +65,8 @@
                             @else
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                     aria-expanded="false"><i class="fa-regular fa-user fa-lg"></i></i></a>
-                                <ul class="dropdown-menu ni-text">
-                                    <li><a class="dropdown-item" href="{{ route('auth.login') }}">Login</a>
-                                    </li>
+                                <ul class="dropdown-menu ddi-text">
+                                    <li><a class="dropdown-item" href="{{ route('auth.login') }}">Login</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
