@@ -1,6 +1,6 @@
 var password = document.getElementById("password");
-var password_confirmation = document.getElementById("password_confirmation");
-var password_compare = document.getElementById("password_compare");
+var password_confirmation = document.getElementById("password-confirmation");
+var password_compare = document.getElementById("password-compare");
 var letter = document.getElementById("letter");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
@@ -8,14 +8,16 @@ var length = document.getElementById("length");
 // When the user starts to type something inside the password field
 password.onkeyup = function () {
     //Checks that the user has inputted the same password in both fields
-    password_confirmation.addEventListener("input", function () {
-        if (password_confirmation.value === password.value && password !== "") {
-            password_compare.classList.remove("invalid");
-            password_compare.classList.add("valid");
-        } else {
-            password_compare.classList.remove("valid");
-            password_compare.classList.add("invalid");
-        }
+    [password, password_confirmation].forEach((element) => {
+        element.addEventListener("input", function () {
+            if (password_confirmation.value === password.value) {
+                password_compare.classList.remove("invalid");
+                password_compare.classList.add("valid");
+            } else {
+                password_compare.classList.remove("valid");
+                password_compare.classList.add("invalid");
+            }
+        });
     });
 
     // Checks that the user has inputted letters
@@ -47,3 +49,4 @@ password.onkeyup = function () {
         length.classList.add("invalid");
     }
 };
+
