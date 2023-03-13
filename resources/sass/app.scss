@@ -17,9 +17,8 @@ body {
 body {
     font-family: $font-family;
     font-weight: 400;
-    background-image: url("../../public/storage/image/background/bnbbackground.png");
+    background-image: url("../../public/storage/images/background/greenweathericon.jpeg");
     background-repeat: repeat;
-    background-size: 600px 600px;
 }
 main {
     display: block;
@@ -42,8 +41,8 @@ main {
 .ni-text {
     font-size: 18px;
 }
-.ddi-text {
-    font-size: 16px;
+.col-lg-3 {
+    flex: auto;
 }
 
 // password visual validation
