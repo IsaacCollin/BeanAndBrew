@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 "resources/sass/app.scss",
                 "resources/js/app.js",
-                "resources/js/passwordIndicator.js",
+                "resources/js/password-indicator.js",
+                "resources/js/weather-location.js",
             ],
             refresh: true,
         }),

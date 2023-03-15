@@ -1,5 +1,9 @@
 <x-head>
+    <x-slot:head>
+        @vite(['resources/js/password-indicator.js'])
+    </x-slot:head>
 </x-head>
+
 
 <body class="text-center">
     <nav class="navbar navbar-expand-lg bg-light" aria-label="Thirteenth navbar example">

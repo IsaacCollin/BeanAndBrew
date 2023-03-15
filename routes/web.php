@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Random\ApiController;
+use App\Http\Controllers\Shop\DashboardController;
+use App\Http\Controllers\Shop\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +24,15 @@ Route::get('/home', function () {
 });
 
 Route::get('shop/dashboard', [DashboardController::class, 'index'])->name('shop.dashboard');
+
+Route::get('api', function() {
+  return view('api');
+});
+
+Route::post('api', [ApiController::class, 'getWeather'])->name('api');
+
+Route::get('shop/menu', [MenuController::class, 'create'])->name('shop.menu');
+Route::post('shop/menu', [MenuController::class, 'store'])->name('shop.menu');
 
 Route::middleware('auth')->group(function () {
 });

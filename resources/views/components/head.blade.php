@@ -7,4 +7,5 @@
     <meta name="author" content="">
     <title>Bean & Brew</title>
     @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+    {{ $head }}
 </head>

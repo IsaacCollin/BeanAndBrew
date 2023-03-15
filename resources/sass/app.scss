@@ -1,5 +1,5 @@
 // Fonts
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700");
 
 // Variables
 @import "variables";
@@ -17,11 +17,29 @@ body {
 body {
     font-family: $font-family;
     font-weight: 400;
-    background-image: url("../../public/storage/images/background/greenweathericon.jpeg");
+    background-image: url("../../public/storage/image/background/bnbbackground.png");
     background-repeat: repeat;
+    background-size: 600px 600px;
 }
 main {
     display: block;
+}
+
+// Navbar
+.nt-text {
+    font-size: 22px;
+    font-weight: 500;
+}
+.ni-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+.ddi-text {
+    font-size: 16px;
+    font-weight: 500;
+}
+.col-lg-3 {
+    flex: auto;
 }
 
 // Auth
@@ -32,17 +50,6 @@ main {
     padding: 4rem;
     background-color: #f8f9fa;
     border-radius: 20px;
-}
-
-// Navbar
-.nt-text {
-    font-size: 22px;
-}
-.ni-text {
-    font-size: 18px;
-}
-.col-lg-3 {
-    flex: auto;
 }
 
 // password visual validation

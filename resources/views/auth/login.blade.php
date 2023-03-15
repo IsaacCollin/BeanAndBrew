@@ -1,5 +1,8 @@
 <x-head>
+    <x-slot:head>
+    </x-slot:head>
 </x-head>
+
 
 <body class="text-center">
     <nav class="navbar navbar-expand-lg bg-light" aria-label="Thirteenth navbar example">
