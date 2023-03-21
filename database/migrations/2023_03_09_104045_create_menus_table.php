@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('item_title', 40);
-            $table->enum('item_type', ['Drinks', 'Bakery']);
-            $table->string('item_desc', 80);
-            $table->float('item_price', 4, 2);
-            $table->string('item_img', 255);
-            $table->string('img_alt', 50);
+            $table->string('product-title', 40);
+            $table->string('product-description', 80);
+            $table->string('product-image', 255);
+            $table->string('product-image-alt', 60);
+            $table->float('product-price', 4, 2);
+            $table->enum('product-type', [
+                'Coffee', 'Tea',
+                'Bakery', 'Breakfast',
+                'Sandwiches and Wraps',
+                'Smoothies and Juices',
+                'Snacks and Desserts'
+            ]);
             $table->timestamps();
         });
     }

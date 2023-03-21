@@ -1,43 +1,40 @@
 <x-head>
-    <x-slot:head>
-    </x-slot:head>
-  </x-head>
-  
+  <x-slot:head>
+  </x-slot:head>
+</x-head>
+
 
 <body class="text-center">
-    <x-navbar>
-    </x-navbar>
 
-    <main>
-        <div class="container mt-5 py-5 bg-light">
-            <div class="album">
+  <x-navbar>
+  </x-navbar>
 
-                <div class="row g-3">
-                    <div class="col col-md-3">
+  <main>
+    <div class="container mt-5 py-5 bg-light">
+      <div class="album">
 
-                        <div class="card">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="180"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>Placeholder</title>
-                                <rect width="100%" height="100%" fill="#868e96"></rect><text x="50%"
-                                    y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                            </svg>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+          <div class="col mb-5">
+            <div class="card h-100">
+              <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="" />
+              <div class="card-body p-4">
+                <div class="text-center">
+                  <h5 class="fw-bolder">Fancy Product</h5>
+                  £40.00 - £80.00
                 </div>
-
+              </div>
+              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center"><a class="btn btn-outline-secondary mt-auto" href="#">View options</a>
+                </div>
+              </div>
             </div>
+          </div>
+
         </div>
-    </main>
+
+      </div>
+    </div>
+  </main>
+
 </body>
