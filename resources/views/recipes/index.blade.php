@@ -16,7 +16,7 @@
           <div class="d-flex">
             <h3 class="mb-0 mt-1 ms-5 me-auto">Create a Post</h3>
             <a class="btn btn-secondary fs-6 px-4 py-2 me-3" href="">Edit Article</a>
-            <a class="btn btn-secondary fs-6 px-4 py-2 me-5" href="{{ route('posts.create') }}"> Create Article</a>
+            <a class="btn btn-secondary fs-6 px-4 py-2 me-5" href="{{ route('recipes.create') }}"> Create Article</a>
           </div>
         </div>
       @endif
