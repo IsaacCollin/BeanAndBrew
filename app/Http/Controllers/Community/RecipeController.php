@@ -121,4 +121,15 @@ class RecipeController extends Controller
     public function destroy($id)
     {
     }
+    
+    	private function makeSlug($request)
+	{
+	}
+
+	private function storeImage($request)
+	{
+		$newImageName = uniqid() . '-' . $request->title . '.' . $request->image_url->extension();
+
+		return $request->image_url->move(public_path('image/posts'), $newImageName);
+	}
 }
