@@ -14,14 +14,23 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->string('category');
             $table->string('title', 40);
+            $table->enum('category', [
+                'Bakery', 'Breakfast',
+                'Sandwiches and Wraps',
+                'Smoothies and Juices',
+                'Snacks and Desserts'
+            ]);
+            $table->text('description', 110);
             $table->text('body');
             $table->text('body_2');
+            $table->text('body_3')->nullable();
             $table->string('image_url', 255);
             $table->string('image_alt', 40);
             $table->string('image_url_2', 255);
             $table->string('image_alt_2', 40);
+            $table->string('image_url_3', 255)->nullable();
+            $table->string('image_alt_3', 40)->nullable();
             $table->timestamps();
         });
     }

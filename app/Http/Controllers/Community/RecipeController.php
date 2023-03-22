@@ -35,6 +35,7 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        $request -> validate([]);
     }
 
     /**
@@ -43,7 +44,7 @@ class RecipeController extends Controller
      * @return Application|Factory|View
      * Optional route parameter needs to have a default value eg: $id = 1
      */
-    public function show($id)
+    public function show()
     {
         return view('recipes.show');
     }
