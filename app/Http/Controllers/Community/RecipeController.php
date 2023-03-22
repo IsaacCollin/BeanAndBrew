@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Community;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class RecipeController extends Controller
 {
@@ -36,58 +38,30 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         if (Auth::check() && Auth::user()->is_admin == 1) {
-			$user = Auth::user();
+            $user = Auth::user();
 
-			$image = $request->file('image_url');
-			$image_name = $user->id . '.' . $image->getClientOriginalExtension();
-			$image_url = $image->store('/image/posts', 'public');
+            
 
-			if ($request->hasFile('image_url_2')) {
-				$image = $request->file('image_url_2');
-				$image_name = $user->id . '.' . $image->getClientOriginalExtension();
-				$image_url_2 = $image->store('/image/posts', 'public');
-
-				$request->validate([
-					'image_alt_2' => 'required|string|max:40',
-					'image_url_2' => 'required|image|mimes:jpeg,png,jpg,svg|max:512',
-				]);
-			} else {
-				return $image_url_2 = null;
-			}
-
-			if ($request->hasFile('image_url_3')) {
-				$image = $request->file('image_url_3');
-				$image_name = $user->id . '.' . $image->getClientOriginalExtension();
-				$image_url_3 = $image->store('/image/posts', 'public');
-
-				$request->validate([
-					'image_alt_3' => 'required|string|max:40',
-					'image_url_3' => 'required|image|mimes:jpeg,png,jpg,svg|max:512',
-				]);
-			} else {
-				return $image_url_3 = null;
-			}
-
-			Post::create([
-				'slug' => 'show',
-				'title' => $request->title,
-				'category' => $request->category,
-				'description' => $request->description,
-				'body' => $request->body,
-				'body_2' => $request->body_2,
-				'body_3' => $request->body_3,
-				'image_url' => $image_url,
-				'image_alt' => $request->image_alt,
-				'image_url_2' => $image_url_2,
-				'image_alt_2' => $request->image_alt_2,
-				'image_url_3' => $image_url_3,
-				'image_alt_3' => $request->image_alt_3,
-				'user_name' => $user->name,
-			]);
+            Reci::create([
+                'slug' => Str::slug($request->title),
+                'title' => $request->title,
+                'category' => $request->category,
+                'description' => $request->description,
+                'body' => $request->body,
+                'body_2' => $request->body_2,
+                'body_3' => $request->body_3,
+                'image_url' => $this->$request->$newImageName,
+                'image_alt' => $request->image_alt,
+                'image_url_2' => '$image_url_2',
+                'image_alt_2' => $request->image_alt_2,
+                'image_url_3' => '$image_url_3',
+                'image_alt_3' => $request->image_alt_3,
+                'user_name' => $user->name,
+            ]);
             return redirect(route('recipes.index'));
-          } else {
-			return redirect(route('auth.login'))->withErrors('You do not have the permissions to access this function');
-		}
+        } else {
+            return redirect(route('auth.login'))->withErrors('You do not have the permissions to access this function');
+        }
     }
 
     /**
@@ -121,15 +95,11 @@ class RecipeController extends Controller
     public function destroy($id)
     {
     }
-    
-    	private function makeSlug($request)
-	{
-	}
 
-	private function storeImage($request)
-	{
-		$newImageName = uniqid() . '-' . $request->title . '.' . $request->image_url->extension();
+    private function storeImage($request)
+    {
+        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image_url->extension();
 
-		return $request->image_url->move(public_path('image/posts'), $newImageName);
-	}
+        return $request->image_url->move(public_path('image/posts'), $newImageName);
+    }
 }
