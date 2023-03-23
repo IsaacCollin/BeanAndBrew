@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Community\RecipeController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\Random\ApiController;
 use App\Http\Controllers\Shop\DashboardController;
 use App\Http\Controllers\Shop\MenuController;
@@ -35,7 +35,8 @@ Route::post('api', [ApiController::class, 'getWeather'])->name('api');
 Route::prefix('recipes')->group(function () {
   Route::get('/create', [RecipeController::class, 'create'])->name('recipes.create');
   Route::get('/', [RecipeController::class, 'index'])->name('recipes.index');
-  Route::get('/show', [RecipeController::class, 'show'])->name('recipes.show');
+  Route::get('/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
+  Route::post('/', [RecipeController::class, 'store'])->name('recipe.store');
 });
 
 Route::prefix('shop')->group(function () {

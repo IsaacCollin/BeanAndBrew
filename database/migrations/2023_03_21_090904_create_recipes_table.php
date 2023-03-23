@@ -21,16 +21,17 @@ return new class extends Migration
                 'Smoothies and Juices',
                 'Snacks and Desserts'
             ]);
-            $table->text('description', 110);
-            $table->text('body');
-            $table->text('body_2');
-            $table->text('body_3')->nullable();
-            $table->string('image_url', 255);
+            $table->string('description', 110);
+            $table->text('body', 1000);
+            $table->text('body_2', 1000);
+            $table->text('body_3', 1000);
+            $table->string('image_url', 2048);
             $table->string('image_alt', 40);
-            $table->string('image_url_2', 255);
-            $table->string('image_alt_2', 40);
-            $table->string('image_url_3', 255)->nullable();
+            $table->string('image_url_2', 2048)->nullable();
+            $table->string('image_alt_2', 40)->nullable();
+            $table->string('image_url_3', 2048)->nullable();
             $table->string('image_alt_3', 40)->nullable();
+            $table->string('user_name');
             $table->timestamps();
         });
     }

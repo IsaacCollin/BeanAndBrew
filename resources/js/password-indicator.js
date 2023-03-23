@@ -1,6 +1,6 @@
 var password = document.getElementById("password");
-var password_confirmation = document.getElementById("password-confirmation");
-var password_compare = document.getElementById("password-compare");
+var password_confirmation = document.getElementById("password_confirmation");
+var password_compare = document.getElementById("password_compare");
 var letter = document.getElementById("letter");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
@@ -49,4 +49,3 @@ password.onkeyup = function () {
         length.classList.add("invalid");
     }
 };
-
