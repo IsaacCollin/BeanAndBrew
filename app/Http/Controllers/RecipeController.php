@@ -157,31 +157,42 @@ class RecipeController extends Controller
   {
   }
 
-  private function storeImage($request, $index)
-  {
-    // Handle image upload
-    if ($index == 1) {
-      $image = 'image_url';
-    } else {
-      $image = 'image_url_' . $index;
-    }
+private function storeImage($request, $index)
+	{
+		// Handle image upload
+		if ($index == 1) {
+			$image = 'image_url';
+		} else {
+			$image = 'image_url_' . $index;
+		}
 
-    if ($request->hasFile($image)) {
-      $newImageName = uniqid() . '-' . Str::slug($request->title) . '_' . $index . '.' . $request->image_url->extension();
-      $imagePath = $request->image_url->storeAs('public/image/posts', $newImageName);
-      $imageAlt = $request->has('image_alt') ? $request->image_alt : '';
+		if ($request->hasFile($image)) {
+			if ($index == 1) {
+				$newImageName = uniqid() . '-' . Str::slug($request->title) . '_' . $index . '.' . $request->image_url->extension();
+				$imagePath = $request->image_url->storeAs('public/image/posts', $newImageName);
+				$imageAlt = $request->has('image_alt') ? $request->image_alt : '';
+			} elseif ($index == 2) {
+				$newImageName = uniqid() . '-' . Str::slug($request->title) . '_' . $index . '.' . $request->image_url_2->extension();
+				$imagePath = $request->image_url_2->storeAs('public/image/posts', $newImageName);
+				$imageAlt = $request->has('image_alt') ? $request->image_alt_2 : '';
+			} else {
+				$newImageName = uniqid() . '-' . Str::slug($request->title) . '_' . $index . '.' . $request->image_url_3->extension();
+				$imagePath = $request->image_url_3->storeAs('public/image/posts', $newImageName);
+				$imageAlt = $request->has('image_alt') ? $request->image_alt_3 : '';
+			}
 
-      if ($index == 1) {
-        return [
-          'image_path' => 'image/posts/' . $newImageName,
-          'image_alt' => $imageAlt
-        ];
-      } else {
-        return [
-          'image_path_' . $index => 'image/posts/' . $newImageName,
-          'image_alt_' . $index => $imageAlt
-        ];
-      }
-    }
-  }
+
+			if ($index == 1) {
+				return [
+					'image_path' => 'image/posts/' . $newImageName,
+					'image_alt' => $imageAlt
+				];
+			} else {
+				return [
+					'image_path_' . $index => 'image/posts/' . $newImageName,
+					'image_alt_' . $index => $imageAlt
+				];
+			}
+		}
+	}
 }
