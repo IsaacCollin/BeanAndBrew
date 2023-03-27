@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Category as EnumCategory;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Enums\Category;
+use Illuminate\Validation\Rules\Enum;
 
 class RecipeController extends Controller
 {
@@ -14,10 +17,33 @@ class RecipeController extends Controller
    *
    * @return Application|Factory|View
    */
-  public function index()
+  public function index(Request $request /*,$category = null*/)
   {
-    return view('recipes.index');
+    $recipe = Recipe::query();
+
+    // if ($category) {
+    //   $recipe->where('category', $category);
+    // }
+
+    // Filter by category
+    if ($request->has('category')) {
+      $recipe->where('category', $request->input('category'));
+    }
+
+    // Search by title or content
+    if ($request->filled('search')) {
+      $search = $request->input('search');
+      $recipe->where(function ($query) use ($search) {
+        $query->where('title', 'LIKE', "%$search%")
+          ->orWhere('content', 'LIKE', "%$search%");
+      });
+    }
+
+    $recipe = $recipe->orderBy('created_at', 'desc');
+
+    return view('recipes.index', compact('recipe'));
   }
+
 
   /**
    * Show the form for creating a new resource.
@@ -41,8 +67,8 @@ class RecipeController extends Controller
       $user = Auth::user();
 
       $request->validate([
-        'title' => 'required|string|max:40',
-        'category' => 'required',
+        'title' => 'required|string|unique|max:40',
+        'category' => ['required', new Enum(EnumCategory::class)],
         'description' => 'required|string|max:110',
         'body' => 'required|string|max:1000',
         'body_2' => 'required|string|max:1000',
@@ -75,7 +101,7 @@ class RecipeController extends Controller
       Recipe::create([
         'slug' => Str::slug($request->title),
         'title' => $request->title,
-        'category' => $request->category,
+        'category' => $request->enum('category', Category::class),
         'description' => $request->description,
         'body' => $request->body,
         'body_2' => $request->body_2,
@@ -101,9 +127,13 @@ class RecipeController extends Controller
    * @return Application|Factory|View
    * Optional route parameter needs to have a default value eg: $id = 1
    */
-  public function show(Recipe $slug)
+  public function show($slug, $category)
   {
-    return view('recipes.show');
+    $recipe = Recipe::where('category', $category)
+      ->where('slug', $slug)
+      ->firstOrFail();
+
+    return view('recipes.show', compact($recipe));
   }
 
   /**
@@ -130,29 +160,28 @@ class RecipeController extends Controller
   private function storeImage($request, $index)
   {
     // Handle image upload
-    if($index == 1) {
+    if ($index == 1) {
       $image = 'image_url';
     } else {
-      $image = 'image_url_'.$index;
+      $image = 'image_url_' . $index;
     }
 
     if ($request->hasFile($image)) {
-      $newImageName = uniqid() . '-' . Str::slug($request->title) . '_'. $index . '.' . $request->image_url->extension();
+      $newImageName = uniqid() . '-' . Str::slug($request->title) . '_' . $index . '.' . $request->image_url->extension();
       $imagePath = $request->image_url->storeAs('public/image/posts', $newImageName);
       $imageAlt = $request->has('image_alt') ? $request->image_alt : '';
 
-      if($index == 1) {
+      if ($index == 1) {
         return [
           'image_path' => 'image/posts/' . $newImageName,
           'image_alt' => $imageAlt
         ];
       } else {
         return [
-          'image_path_'.$index => 'image/posts/' . $newImageName,
-          'image_alt_'.$index => $imageAlt
+          'image_path_' . $index => 'image/posts/' . $newImageName,
+          'image_alt_' . $index => $imageAlt
         ];
       }
-
     }
   }
 }

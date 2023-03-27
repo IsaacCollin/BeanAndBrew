@@ -2,27 +2,27 @@
 
 namespace App\Models;
 
+use App\Enum\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Recipe extends Model
 {
-    use HasFactory;
+  use HasFactory; use HasRichText;
 
-    protected $fillable = [
-        'slug',
-        'title',
-        'category',
-        'description',
-        'body',
-        'body_2',
-        'body_3',
-        'image_url',
-        'image_alt',
-        'image_url_2',
-        'image_alt_2',
-        'image_url_3',
-        'image_alt_3',
-        'user_name',
-    ];
+  protected $fillable = [
+    'slug',
+    'title',
+    'description',
+    'user_name',
+  ];
+
+  protected $casts = [
+    'category' => Category::class
+  ];
+
+  protected $richTextFields = [
+    'content',
+  ];
 }

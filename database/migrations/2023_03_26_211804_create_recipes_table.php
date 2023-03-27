@@ -11,21 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->string('product-title', 40);
-            $table->string('product-description', 80);
-            $table->string('product-image', 255);
-            $table->string('product-image-alt', 60);
-            $table->float('product-price', 4, 2);
-            $table->enum('product-type', [
-                'coffee', 'tea',
+            $table->string('slug');
+            $table->enum('category', [
                 'bakery', 'breakfast',
                 'sandwiches', 'wraps',
                 'smoothie', 'snacks',
                 'desserts'
             ]);
+            $table->string('title', 40);
+            $table->string('description', 100);
+            $table->string('user_name');
+
+            $table->morphs('record');
+            $table->string('field');
+            $table->longText('body')->nullable();
             $table->timestamps();
+
+            $table->unique(['field', 'record_type', 'record_id']);
         });
     }
 
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('recipes');
     }
 };

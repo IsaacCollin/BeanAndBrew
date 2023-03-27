@@ -5,8 +5,7 @@
 
 <body>
 
-  <x-navbar>
-  </x-navbar>
+  <x-navbar />
 
   <main>
 
@@ -45,9 +44,11 @@
               <option selected>Select an option</option>
               <option value="Bakery">Bakery</option>
               <option value="Breakfast">Breakfast</option>
-              <option value="Sandwiches and Wraps">Sandwiches and Wraps</option>
-              <option value="Smoothies and Juices">Smoothies and Juices</option>
-              <option value="Snacks and Desserts">Snacks and Desserts</option>
+              <option value="Sandwiches">Sandwiches</option>
+              <option value="Wraps">Wraps</option>
+              <option value="Smoothies">Smoothies</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Desserts">Desserts</option>
             </select>
           </div>
 
@@ -58,54 +59,8 @@
           </div>
 
           <div class="col-12">
-            <textarea style="resize: none" class="form-control" name="body" placeholder="Body" id="Body" rows="5"></textarea>
-            <label class="d-none" for="Body">Body</label>
-          </div>
-
-          <div class="col-6">
-            <input class="form-control" type="file" name="image_url" id="image_url">
-            <label class="d-none" for="image_url">Image</label>
-          </div>
-
-          <div class="col-6">
-            <input class="form-control" type="text" name="image_alt" id="image_alt" placeholder="Image Alt Tag">
-            <label class="d-none" for="image_alt">Image Alt Tag</label>
-          </div>
-
-          <div class="col-12">
-            <textarea style="resize: none;" class="form-control" name="body_2" placeholder="Second Body" id="body_2"
-              rows="5"></textarea>
-            <label class="d-none" for="body_2">Second Text</label>
-          </div>
-
-          <div class="col-12">
-            <textarea style="resize: none;" class="form-control" name="body_3" placeholder="Third Body" id="body_3"
-              rows="5"></textarea>
-            <label class="d-none" for="body_3">Third Text</label>
-          </div>
-
-          <h3 class="text-start mt-5">Optional:</h3>
-
-          <div class="col-6">
-            <input class="form-control" type="file" name="image_url_2" id="image_url_2 ">
-            <label class="d-none" for="image_url_2">Second Image</label>
-          </div>
-
-          <div class="col-6">
-            <input class="form-control" type="text" name="image_alt_2" id="image_alt_2"
-              placeholder="Second Image Alt Tag">
-            <label class="d-none" for="image_alt_2">Second Image Alt Tag</label>
-          </div>
-
-          <div class="col-6">
-            <input class="form-control" type="file" name="image_url_3" id="image_url_3 ">
-            <label class="d-none" for="image_url_3">Third Image</label>
-          </div>
-
-          <div class="col-6">
-            <input class="form-control" type="text" name="image_alt_3" id="image_alt_3"
-              placeholder="Third Image Alt Tag">
-            <label class="d-none" for="image_alt_3">Third Image Alt Tag</label>
+            <x-trix-field class="form-control" id="post_body" name="body" />
+            <label class="d-none" for="post_body">Description of Post</label>
           </div>
 
           <div class="col-6 text-start mt-5">

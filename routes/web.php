@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\Random\ApiController;
 use App\Http\Controllers\Shop\DashboardController;
 use App\Http\Controllers\Shop\MenuController;
 use Illuminate\Support\Facades\Route;
@@ -26,16 +25,12 @@ Route::get('/home', function () {
 
 Route::get('shop/dashboard', [DashboardController::class, 'index'])->name('shop.dashboard');
 
-Route::get('api', function () {
-  return view('api');
-});
-
-Route::post('api', [ApiController::class, 'getWeather'])->name('api');
-
 Route::prefix('recipes')->group(function () {
   Route::get('/create', [RecipeController::class, 'create'])->name('recipes.create');
   Route::get('/', [RecipeController::class, 'index'])->name('recipes.index');
-  Route::get('/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
+  Route::post('/', [RecipeController::class, 'index'])->name('recipes.index');
+  //Route::get('/{category}', [RecipeController::class, 'index'])->name('recipes.index');
+  Route::get('/{category}/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
   Route::post('/', [RecipeController::class, 'store'])->name('recipe.store');
 });
 
