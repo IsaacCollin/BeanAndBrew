@@ -24,31 +24,6 @@
 
     <div class="container rounded mt-5 py-5 bg-light">
 
-      <form class="mb-3" action="{{ route('recipes.index') }}" method="POST">
-        @csrf
-
-        <div class="d-flex" role="search">
-          <div class="ms-4 me-auto form-floating">
-            <select name="category" class="form-select" id="floatingSelect" onchange="this.form.submit()">
-              <option>All Categories</option>
-              <option value="technology" {{ request('category') == 'bakery' ? 'selected' : '' }}>Bakery</option>
-              <option value="science" {{ request('category') == 'breakfast' ? 'selected' : '' }}>Breakfast</option>
-              <option value="business" {{ request('category') == 'sandwiches' ? 'selected' : '' }}>Sandwiches</option>
-              <option value="business" {{ request('category') == 'wraps' ? 'selected' : '' }}>Wraps</option>
-              <option value="business" {{ request('category') == 'smoothie' ? 'selected' : '' }}>Smoothie</option>
-              <option value="business" {{ request('category') == 'snacks' ? 'selected' : '' }}>Snacks</option>
-              <option value="business" {{ request('category') == 'desserts' ? 'selected' : '' }}>Desserts</option>
-            </select>
-            <label for="floatingSelect">Select a category</label>
-          </div>
-
-          <input class="form-control me-1 w-25" type="search" placeholder="Search" value="{{ request('search') }}"
-            aria-label="Search">
-          <button class="btn btn-outline-secondary me-4" type="submit">Search</button>
-        </div>
-
-      </form>
-
       <div class="row m-2 text-start">
 
         @foreach ($recipe as $recipe)

@@ -30,7 +30,6 @@
             </ul>
           </li>
           <li class="nav-item">
-            {{-- , ['category' => 'bakery'] --}}
             <a class="nav-link" href="{{ route('recipes.index') }}">Recipes</a>
           </li>
         </ul>

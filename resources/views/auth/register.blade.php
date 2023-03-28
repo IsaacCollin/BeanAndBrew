@@ -29,17 +29,17 @@
   </nav>
 
   @if ($errors->any())
-      <div class="toast bg-danger bg-gradient text-start text-white fade show">
-        <div class="toast-header bg-danger text-white">
-          <strong class="me-auto">Errors</strong>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body">
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </div>
+    <div class="toast bg-danger bg-gradient text-start text-white fade show">
+      <div class="toast-header bg-danger text-white">
+        <strong class="me-auto">Errors</strong>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
       </div>
+      <div class="toast-body">
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </div>
+    </div>
   @endif
 
   <main class="form-auth w-100 h-100 m-auto">

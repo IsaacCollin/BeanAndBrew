@@ -28,8 +28,6 @@ Route::get('shop/dashboard', [DashboardController::class, 'index'])->name('shop.
 Route::prefix('recipes')->group(function () {
   Route::get('/create', [RecipeController::class, 'create'])->name('recipes.create');
   Route::get('/', [RecipeController::class, 'index'])->name('recipes.index');
-  Route::post('/', [RecipeController::class, 'index'])->name('recipes.index');
-  //Route::get('/{category}', [RecipeController::class, 'index'])->name('recipes.index');
   Route::get('/{category}/{slug}', [RecipeController::class, 'show'])->name('recipes.show');
   Route::post('/', [RecipeController::class, 'store'])->name('recipe.store');
 });

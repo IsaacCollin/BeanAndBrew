@@ -21,7 +21,7 @@ return new class extends Migration
                 'desserts'
             ]);
             $table->string('title', 40);
-            $table->string('description', 100);
+            
             $table->string('user_name');
 
             $table->morphs('record');

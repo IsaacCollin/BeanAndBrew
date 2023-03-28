@@ -29,18 +29,29 @@
           </div>
         @endif
 
-        <div class="row g-4 mx-3 my-1">
+        <div class="row g-4 mx-3 mb-4 my-1">
 
           <h3 class="text-start mt-5">Required:</h3>
 
-          <div class="col-6">
-            <input type="text" class="form-control" name="title" id="title" placeholder="Post Title">
+          <div class="col-md-7">
+            <input type="text" class="form-control" name="title" id="title" placeholder="Post Title" required>
             <label class="d-none" for="title">Post Title</label>
           </div>
 
-          <div class="col-6">
-            <label for="category" class="form-label d-none">Select an option</label>
-            <select class="form-select" name="category" id="category">
+          <div class="col-md-6">
+            <input type="file" class="form-control" name="image_url" id="image_url" placeholder="Thumbnail Image"
+              required>
+            <label class="d-none" for="image_url">Thumbnail Image</label>
+          </div>
+
+          <div class="col-md-4">
+            <input type="text" class="form-control" name="image_alt" id="image_alt"
+              placeholder="Thumbnail Image Alt Tag" required>
+            <label class="d-none" for="image_alt">Thumbnail Image Alt Tag</label>
+          </div>
+
+          <div class="col-md-2">
+            <select class="form-select" name="category" id="category" required>
               <option selected>Select an option</option>
               <option value="Bakery">Bakery</option>
               <option value="Breakfast">Breakfast</option>
@@ -50,16 +61,12 @@
               <option value="Snacks">Snacks</option>
               <option value="Desserts">Desserts</option>
             </select>
+            <label class="d-none" for="category">Select an option</label>
           </div>
 
-          <div class="col-12">
-            <input type="text" class="form-control" name="description" id="description"
-              placeholder="Description of Post">
-            <label class="d-none" for="description">Description of Post</label>
-          </div>
-
-          <div class="col-12">
-            <x-trix-field class="form-control" id="post_body" name="body" />
+          <div class="col-12 mt-5">
+            <x-rich-text-trix-styles />
+            <x-trix-field id="post_body" name="body" />
             <label class="d-none" for="post_body">Description of Post</label>
           </div>
 
